@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function load() {
+			var name=document.createElement("input");
+			name.setAttribute("type","text");
+			name.setAttribute("placeholder","Enter NAme");
+			name.setAttribute("name","name");
+			name.addEventListener("blur",checkname);
+			function checkname(){
+				var r=/^[A-Za-z]+$/;
+				if(name.value==""){
+					alert("Enter name");
+				}
+				
+				else if(!name.value.match(r)){
+					alert("Next try");
+					name.value="";
+				}
+			}
+			var email=document.createElement("input");
+			email.setAttribute("type","email");
+			email.setAttribute("placeholder","Enter Email");
+			email.setAttribute("name","email");
+			email.addEventListener("blur",checkemail);
+			function checkemail(){
+				var e=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				if(email.value==""){
+					alert("Enter EmailID");
+				}
+				
+				else if(!email.value.match(e)){
+					alert("Next try");
+					email.value="";
+				}
+			}
+			
+			var number=document.createElement("input");
+			number.setAttribute("type","number");
+			number.setAttribute("placeholder","Enter Number");
+			number.setAttribute("name","number");
+			var submit=document.createElement("input");
+			submit.setAttribute("type","submit");
+			document.body.appendChild(name);
+			document.body.appendChild(email);
+			document.body.appendChild(number);
+			document.body.appendChild(submit);
+			submit.addEventListener("click",cookie);
+			function cookie(){
+				var set="Name:-"+ name.value + "Email:-"+ email.value + "Number:-"+number.value;
+				document.cookie=set;
+				document.write(document.cookie);
+			}
+		
+			
+		}
+	</script>
+</head>
+<body onload="load();">
+
+</body>
+</html>
